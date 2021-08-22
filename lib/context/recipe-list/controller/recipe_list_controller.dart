@@ -1,3 +1,5 @@
+import 'package:recipe_test/context/recipe-list/models/recipe_dto.dart';
+import 'package:recipe_test/context/recipe-list/repository/recipe_list_repository.dart';
 import 'package:rx_notifier/rx_notifier.dart';
 
 enum RecipeListControllerStatus {
@@ -7,11 +9,11 @@ enum RecipeListControllerStatus {
 }
 
 class RecipeListController {
-  // final RecipeRepository _recipeRepository;
-  // final _rxRecipeDTOList = RxList<RecipeDTO>([]);
-  // List<RecipeDTO> get recipeDTOList => _rxRecipeDTOList.toList();
+  final RecipeListRepository _recipeListRepository;
+  final _rxRecipeDTOList = RxList<RecipeDTO>([]);
+  List<RecipeDTO> get rxRecipeDTOList => _rxRecipeDTOList.toList();
 
-  // RecipeListController(this._recipeRepository);
+  RecipeListController(this._recipeListRepository);
 
   var _rxMyPlansControllerStatus = RxNotifier<RecipeListControllerStatus>(
       RecipeListControllerStatus.PROCESSING);
@@ -20,10 +22,12 @@ class RecipeListController {
 
   refresh() async {
     _rxMyPlansControllerStatus.value = RecipeListControllerStatus.PROCESSING;
-    // _rxRecipeDTOList.clear();
-    // _recipeRepository.getRecipes().then((recipes) {
-    Future.delayed(Duration(seconds: 3)).then((value) =>
-        _rxMyPlansControllerStatus.value = RecipeListControllerStatus.SUCCESS);
-    // });
+
+    _rxRecipeDTOList.clear();
+
+    _recipeListRepository.getAllRecipies().then((recipeList) {
+      _rxRecipeDTOList.addAll(recipeList.recipes);
+      _rxMyPlansControllerStatus.value = RecipeListControllerStatus.SUCCESS;
+    });
   }
 }
