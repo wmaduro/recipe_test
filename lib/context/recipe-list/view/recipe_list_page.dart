@@ -8,7 +8,6 @@ import 'package:recipe_test/core/constants/app_constants.dart';
 import 'package:recipe_test/core/utils/color_util.dart';
 import 'package:recipe_test/shared/components/body_generic.dart';
 import 'package:recipe_test/shared/components/my_card.dart';
-import 'package:recipe_test/shared/components/my_styled_text.dart';
 import 'package:rx_notifier/rx_notifier.dart';
 
 class RecipeListPage extends StatefulWidget {
@@ -78,8 +77,11 @@ class RecipeListPageState extends State<RecipeListPage> {
                         final recipeDTO =
                             recipeListController.rxRecipeDTOList[id];
 
-                        return myCard(
-                          cardContent: _cardContent(recipeDTO, context),
+                        return GestureDetector(
+                          onTap: () => print('${recipeDTO.name}'),
+                          child: myCard(
+                            cardContent: _cardContent(recipeDTO, context),
+                          ),
                         );
                       },
                     )));
@@ -117,7 +119,7 @@ class RecipeListPageState extends State<RecipeListPage> {
                 bottom: 0,
                 left: 0,
                 child: Container(
-                    height: cardHeight * 1.1,
+                    height: cardHeight * 1.20,
                     width: cardWidth,
                     decoration: BoxDecoration(
                       image: DecorationImage(
