@@ -36,4 +36,8 @@ class RecipeDTO {
         'imageURL': imageUrl,
         'originalURL': originalUrl,
       };
+
+  int getTotalTime() {
+    return timers?.reduce((a, b) => a + b);
+  }
 }

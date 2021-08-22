@@ -78,13 +78,8 @@ class RecipeListPageState extends State<RecipeListPage> {
                         final recipeDTO =
                             recipeListController.rxRecipeDTOList[id];
 
-                        return myCardWithButtomBar(
-                          cardContent: _cardContent(recipeDTO),
-                          // buttonBarContentList: _buttonBarContentList(
-                          //   context,
-                          //   planDTO,
-                          //   enrollmentController,
-                          // ),
+                        return myCard(
+                          cardContent: _cardContent(recipeDTO, context),
                         );
                       },
                     )));
@@ -96,28 +91,55 @@ class RecipeListPageState extends State<RecipeListPage> {
 
   _cardContent(
     RecipeDTO recipeDTO,
+    BuildContext context,
   ) {
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Padding(
-          padding:
-              const EdgeInsets.only(top: 10, left: 15, right: 15, bottom: 0),
-          child: myStyledText('<b>${recipeDTO.name}<b>',
-              textStyleTag: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 34,
-              ))),
-      // Padding(
-      //   padding: const EdgeInsets.only(top: 5, left: 15, right: 15, bottom: 12),
-      //   child: Column(
-      //     crossAxisAlignment: CrossAxisAlignment.start,
-      //     children: [
-      //       myStyledText('Expiration: <b>${planDTO.formatExpirePeriod()}</b>'),
-      //       myStyledText(
-      //           'Number of Trips: <b>${planDTO.formatNumberOfTrips()}</b>'),
-      //       myStyledText('Price: <b>${planDTO.formatPrice()}</b>'),
-      //     ],
-      //   ),
-      // )
-    ]);
+    var cardHeight = MediaQuery.of(context).size.height * .23;
+    var cardWidth = MediaQuery.of(context).size.width;
+
+    return Container(
+        height: cardHeight,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            fit: BoxFit.cover,
+            image: NetworkImage(recipeDTO.imageUrl ?? ''),
+          ),
+        ),
+        child: Stack(
+          children: [
+            Positioned(
+                bottom: 0,
+                left: 0,
+                child: Container(
+                    height: cardHeight * 1.35,
+                    width: cardWidth,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.fitWidth,
+                        image: AssetImage(
+                            'assets/images/background-gradient-black.png'),
+                      ),
+                    ))),
+            Positioned(
+              bottom: 15,
+              left: 25,
+              child: Text(recipeDTO.name ?? '',
+                  style: TextStyle(fontSize: 18, color: Colors.white)),
+            ),
+            Positioned(
+                bottom: 15,
+                right: 25,
+                child: Row(children: [
+                  Icon(
+                    Icons.watch_later,
+                    color: Colors.white,
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text('${recipeDTO.getTotalTime()} Minutes',
+                      style: TextStyle(fontSize: 12, color: Colors.white)),
+                ])),
+          ],
+        ));
   }
 }
