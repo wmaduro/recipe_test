@@ -27,12 +27,11 @@ class SplashPageState extends State<SplashPage> {
                 _splashController.refreshImageOpacity();
               },
               opacity: _splashController.rxOpacityLevel.value,
-              duration: Duration(microseconds: 500),
+              duration: Duration(milliseconds: 800),
               curve: Curves.fastOutSlowIn,
               child: Center(
-                child: Image.asset(
-                  'assets/images/foodstuffs_logo.jpeg',
-                ),
+                child: Image.asset('assets/images/foodstuffs_logo.jpeg',
+                    scale: 0.66),
               ),
             );
           }),
