@@ -9,7 +9,7 @@ class AppContext {
     return _currentContext;
   }
 
-  set currentContextx(BuildContext? context) {
+  set currentContext(BuildContext? context) {
     this._currentContext = context;
   }
 }

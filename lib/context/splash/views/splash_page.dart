@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:recipe_test/context/splash/controllers/splash_controller.dart';
 import 'package:recipe_test/core/config/app_context.dart';
+import 'package:recipe_test/core/constants/module_constants.dart';
 import 'package:recipe_test/core/utils/color_util.dart';
 import 'package:rx_notifier/rx_notifier.dart';
 
@@ -46,11 +47,12 @@ class SplashPageState extends State<SplashPage> {
       _splashController.refreshImageOpacity();
     });
 
-    // Future.delayed(Duration(seconds: 2), () {
-    //   _splashController.refreshState();
-    // });
+    Future.delayed(Duration(seconds: 2), () {
+      Modular.to
+          .pushReplacementNamed(ModuleInfoEnum.RECIPE_LIST.moduleInfo.path);
+    });
 
     super.initState();
-    appContext.currentContextx = context;
+    appContext.currentContext = context;
   }
 }
