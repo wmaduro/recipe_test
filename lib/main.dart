@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:recipe_test/context/global/global_module.dart';
-import 'package:recipe_test/context/global/views/global_widget.dart';
+import 'package:recipe_test/context/init/init_module.dart';
+import 'package:recipe_test/context/init/views/init_widget.dart';
 
 void main() {
   runApp(
-    ModularApp(
-      module: GlobalModule(),
-      child: GlobalWidget(),
-    ),
+    ModularApp(module: InitModule(), child: InitWidget()),
   );
 }

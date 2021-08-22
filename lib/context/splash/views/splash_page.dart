@@ -27,7 +27,7 @@ class SplashPageState extends State<SplashPage> {
                 _splashController.refreshImageOpacity();
               },
               opacity: _splashController.rxOpacityLevel.value,
-              duration: Duration(seconds: 1),
+              duration: Duration(microseconds: 500),
               curve: Curves.fastOutSlowIn,
               child: Center(
                 child: Image.asset(

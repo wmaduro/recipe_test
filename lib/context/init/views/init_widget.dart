@@ -3,12 +3,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:recipe_test/core/utils/color_util.dart';
 
-class GlobalWidget extends StatefulWidget {
+class InitWidget extends StatefulWidget {
   @override
-  _GlobalWidgetState createState() => _GlobalWidgetState();
+  _InitWidgetState createState() => _InitWidgetState();
 }
 
-class _GlobalWidgetState extends State<GlobalWidget> {
+class _InitWidgetState extends State<InitWidget> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
