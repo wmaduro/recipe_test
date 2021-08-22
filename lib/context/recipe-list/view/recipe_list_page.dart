@@ -95,11 +95,12 @@ class RecipeListPageState extends State<RecipeListPage> {
   ) {
     var cardHeight = MediaQuery.of(context).size.height * .23;
     var cardWidth = MediaQuery.of(context).size.width;
-    var nameFontSize = MediaQuery.of(context).size.width * .019;
-    var timeFontSize = MediaQuery.of(context).size.width * .011;
+    var nameWidth = cardWidth * .55;
+    var nameFontSize = cardWidth * .048;
+    var timeFontSize = cardWidth * .033;
 
-    var bottomPosition = 15.0;
-    var leftPosition = 25.0;
+    var bottomPosition = 13.0;
+    var leftPosition = 15.0;
     var distanceBetweenClockAndTime = 5.0;
 
     return Container(
@@ -116,7 +117,7 @@ class RecipeListPageState extends State<RecipeListPage> {
                 bottom: 0,
                 left: 0,
                 child: Container(
-                    height: cardHeight * 1.35,
+                    height: cardHeight * 1.1,
                     width: cardWidth,
                     decoration: BoxDecoration(
                       image: DecorationImage(
@@ -128,9 +129,14 @@ class RecipeListPageState extends State<RecipeListPage> {
             Positioned(
               bottom: bottomPosition,
               left: leftPosition,
-              child: Text(recipeDTO.name ?? '',
-                  style:
-                      TextStyle(fontSize: nameFontSize, color: Colors.white)),
+              child: SizedBox(
+                width: nameWidth,
+                child: Text(recipeDTO.name ?? '',
+                    overflow: TextOverflow.fade,
+                    softWrap: false,
+                    style:
+                        TextStyle(fontSize: nameFontSize, color: Colors.white)),
+              ),
             ),
             Positioned(
                 bottom: bottomPosition,
