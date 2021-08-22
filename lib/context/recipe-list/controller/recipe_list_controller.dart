@@ -1,5 +1,7 @@
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:recipe_test/context/recipe-list/models/recipe_dto.dart';
 import 'package:recipe_test/context/recipe-list/repository/recipe_list_repository.dart';
+import 'package:recipe_test/core/constants/module_constants.dart';
 import 'package:rx_notifier/rx_notifier.dart';
 
 enum RecipeListControllerStatus {
@@ -29,5 +31,9 @@ class RecipeListController {
       _rxRecipeDTOList.addAll(recipeList.recipes);
       _rxMyPlansControllerStatus.value = RecipeListControllerStatus.SUCCESS;
     });
+  }
+
+  showDetail(RecipeDTO recipeDTO) {
+    Modular.to.pushNamed(ModuleInfoEnum.RECIPE_DETAIL.moduleInfo.path);
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:recipe_test/context/recipe-detail/recipe_detail_module.dart';
 import 'package:recipe_test/context/recipe-list/recipe_list_module.dart';
 import 'package:recipe_test/context/recipe-list/service/recipe_data_service.dart';
 import 'package:recipe_test/context/splash/splash_module.dart';
@@ -14,5 +15,6 @@ class InitModule extends Module {
   final List<ModularRoute> routes = [
     ModuleRoute(RouteConstants.rootNav, module: SplashModule()),
     ModuleRoute(RouteConstants.recipeListNav, module: RecipeListModule()),
+    ModuleRoute(RouteConstants.recipeDetailNav, module: RecipeDetailModule()),
   ];
 }

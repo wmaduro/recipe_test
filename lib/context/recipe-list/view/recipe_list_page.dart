@@ -78,7 +78,8 @@ class RecipeListPageState extends State<RecipeListPage> {
                             recipeListController.rxRecipeDTOList[id];
 
                         return GestureDetector(
-                          onTap: () => print('${recipeDTO.name}'),
+                          onTap: () =>
+                              recipeListController.showDetail(recipeDTO),
                           child: myCard(
                             cardContent: _cardContent(recipeDTO, context),
                           ),
