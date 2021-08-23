@@ -34,6 +34,7 @@ class RecipeListController {
   }
 
   showDetail(RecipeDTO recipeDTO) {
-    Modular.to.pushNamed(ModuleInfoEnum.RECIPE_DETAIL.moduleInfo.path);
+    Modular.to.pushNamed(ModuleInfoEnum.RECIPE_DETAIL.moduleInfo.path,
+        arguments: recipeDTO);
   }
 }

@@ -12,6 +12,8 @@ class RecipeDetailModule extends Module {
   @override
   final List<ModularRoute> routes = [
     ChildRoute(RouteConstants.recipeDetailNav,
-        child: (_, args) => RecipeDetailPage()),
+        child: (_, args) => RecipeDetailPage(
+          recipeDTO: args.data,
+        )),
   ];
 }
