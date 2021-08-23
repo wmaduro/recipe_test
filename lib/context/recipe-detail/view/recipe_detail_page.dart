@@ -64,7 +64,6 @@ class RecipeDetailPageState extends State<RecipeDetailPage> {
           SizedBox(
             height: 40,
           ),
-          Text('......')
         ],
       );
     })));
