@@ -23,7 +23,7 @@ showBasicList(String title, List<String> elements, context) {
         ),
         Padding(
             padding: const EdgeInsets.only(
-              left: 25,
+              left: 45,
               right: 25,
             ),
             child: Column(

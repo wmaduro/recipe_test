@@ -21,6 +21,12 @@ class _InitWidgetState extends State<InitWidget> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: ColorsUtil.lightBackground,
+        fontFamily: 'Arial',
+        textTheme: TextTheme(
+          bodyText2: TextStyle(
+            color: Colors.grey[700],
+          ),
+        ),
       ),
     ).modular();
   }
