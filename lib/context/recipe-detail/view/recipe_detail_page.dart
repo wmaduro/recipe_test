@@ -2,11 +2,13 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import 'package:flutter/material.dart';
 import 'package:recipe_test/context/recipe-detail/controller/recipe_detail_controller.dart';
-import 'package:recipe_test/context/recipe-list/models/ingredient.dart';
 import 'package:recipe_test/context/recipe-list/models/recipe_dto.dart';
 import 'package:recipe_test/core/utils/color_util.dart';
 import 'package:rx_notifier/rx_notifier.dart';
-import 'package:recipe_test/context/recipe-detail/view/recipe_detail_page_extension.dart';
+import 'package:recipe_test/context/recipe-detail/view/recipe_detail_page_show_header.dart';
+import 'package:recipe_test/context/recipe-detail/view/recipe_detail_page_show_ingredients.dart';
+import 'package:recipe_test/context/recipe-detail/view/recipe_detail_page_show_steps.dart';
+import 'package:recipe_test/context/recipe-detail/view/recipe_detail_page_show_time.dart';
 
 class RecipeDetailPage extends StatefulWidget {
   final RecipeDTO recipeDTO;
@@ -41,11 +43,15 @@ class RecipeDetailPageState extends State<RecipeDetailPage> {
       return Column(
         children: [
           showHeader(
-              recipeDetailController.rxRecipeDTO?.imageUrl,
-              recipeDetailController.rxRecipeDTO?.name,
-              recipeDetailController.rxRecipeDTO?.getTotalTime()),
+            recipeDetailController.rxRecipeDTO?.imageUrl,
+            recipeDetailController.rxRecipeDTO?.name,
+          ),
           SizedBox(
             height: 5,
+          ),
+          showTime(recipeDetailController.rxRecipeDTO?.getTotalTime()),
+          SizedBox(
+            height: 20,
           ),
           showIngredients(recipeDetailController.rxRecipeDTO?.ingredients),
           SizedBox(
