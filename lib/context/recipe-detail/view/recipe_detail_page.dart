@@ -6,6 +6,7 @@ import 'package:recipe_test/context/recipe-list/models/ingredient.dart';
 import 'package:recipe_test/context/recipe-list/models/recipe_dto.dart';
 import 'package:recipe_test/core/utils/color_util.dart';
 import 'package:rx_notifier/rx_notifier.dart';
+import 'package:recipe_test/context/recipe-detail/view/recipe_detail_page_extension.dart';
 
 class RecipeDetailPage extends StatefulWidget {
   final RecipeDTO recipeDTO;
@@ -39,55 +40,20 @@ class RecipeDetailPageState extends State<RecipeDetailPage> {
     return Container(child: RxBuilder(builder: (_) {
       return Column(
         children: [
-          _showHeader(
+          showHeader(
               recipeDetailController.rxRecipeDTO?.imageUrl,
               recipeDetailController.rxRecipeDTO?.name,
               recipeDetailController.rxRecipeDTO?.getTotalTime()),
           SizedBox(
             height: 5,
           ),
-          _showIngredients(recipeDetailController.rxRecipeDTO?.ingredients),
+          showIngredients(recipeDetailController.rxRecipeDTO?.ingredients),
           SizedBox(
             height: 5,
           ),
-          _showSteps(recipeDetailController.rxRecipeDTO?.steps),
+          showSteps(recipeDetailController.rxRecipeDTO?.steps),
         ],
       );
     }));
-  }
-
-  _showHeader(String? imageUrl, String? name, int? totalTime) {
-    return Column(children: [
-      Text(
-        name ?? '',
-        style: TextStyle(fontSize: 25),
-      ),
-      Text(
-        imageUrl ?? '',
-        style: TextStyle(fontSize: 25),
-      ),
-      Text(
-        '${totalTime ?? 0}',
-        style: TextStyle(fontSize: 25),
-      ),
-    ]);
-  }
-
-  _showIngredients(List<Ingredient>? ingredients) {
-    var widgetList = <Widget>[];
-    ingredients?.forEach((element) {
-      widgetList.add(Text('${element.quantity} ${element.name}'));
-    });
-
-    return Column(children: widgetList);
-  }
-
-  _showSteps(List? steps) {
-    var widgetList = <Widget>[];
-    steps?.forEach((element) {
-      widgetList.add(Text('${element}'));
-    });
-
-    return Column(children: widgetList);
   }
 }
