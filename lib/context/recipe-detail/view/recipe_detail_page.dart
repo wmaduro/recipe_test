@@ -39,8 +39,11 @@ class RecipeDetailPageState extends State<RecipeDetailPage> {
   }
 
   _body(BuildContext context) {
-    return Container(child: RxBuilder(builder: (_) {
+    return SingleChildScrollView(
+        child: Container(child: RxBuilder(builder: (_) {
       return Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           showHeader(
             recipeDetailController.rxRecipeDTO?.imageUrl,
@@ -51,15 +54,15 @@ class RecipeDetailPageState extends State<RecipeDetailPage> {
           ),
           showTime(recipeDetailController.rxRecipeDTO?.getTotalTime()),
           SizedBox(
-            height: 20,
+            height: 40,
           ),
           showIngredients(recipeDetailController.rxRecipeDTO?.ingredients),
           SizedBox(
-            height: 5,
+            height: 40,
           ),
           showSteps(recipeDetailController.rxRecipeDTO?.steps),
         ],
       );
-    }));
+    })));
   }
 }
