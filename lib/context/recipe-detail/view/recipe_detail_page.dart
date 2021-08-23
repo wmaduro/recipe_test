@@ -61,6 +61,10 @@ class RecipeDetailPageState extends State<RecipeDetailPage> {
             height: 40,
           ),
           showSteps(recipeDetailController.rxRecipeDTO?.steps),
+          SizedBox(
+            height: 40,
+          ),
+          Text('......')
         ],
       );
     })));
